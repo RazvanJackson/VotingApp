@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="text-center h1-title"><%=poll.question%></h1>
+    <% if(!alreadyVoted){ %>
+    <form action="submit-vote" method="POST">
+        <input type="hidden" name="pollId" value="<%=poll._id%>">
+        <%  poll.options.forEach(function(option){ %>
+            <div class="list-group-item"><input type="radio" name="option" value = "<%=option.answer%>"> <label for="option" ><%=option.answer%></label> </div> 
+        <% }) %>
+        <button type="submit" class="btn btn-primary" id="vote-btn"><b>VOTE</b></button>
+    </form>
+
+    <% } else{ %>
+        <input type="hidden" name="totalVotes" value="<%=totalVotes%>"> 
+        <% poll.options.forEach(function(option){ %>
+            <div class="progress">
+                <div class="progress-bar" aria-valuenow="<%=option.votes%>"><p><%=option.answer%>(<%=option.votes%> votes)</p></div>
+            </div>
+    <% }); }  %>
+</div>

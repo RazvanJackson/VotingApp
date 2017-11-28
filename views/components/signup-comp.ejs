@@ -1,0 +1,26 @@
+<div class="container register-form">
+    <%if(error.length>0){%> <div class="alert alert-danger"><%=error%></div> <%}%>
+        <form action="/signup" method="POST">
+        <div class="form-group">
+            <label for="email">Email</label><br>
+            <input type="text" name="email" placeholder="Email" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="username">Username</label><br>
+                <input type="text" name="username" placeholder="Username" class="form-control">
+            </div>
+
+        <div class="form-group">
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Password" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="password2">Confirm password</label><br>
+                <input type="password" name="password2" placeholder="Confirm password" class="form-control">
+            </div>
+        
+        <button type="submit" class="btn btn-success signup-btn">Sign up</button>
+    </form>
+</div>

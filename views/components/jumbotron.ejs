@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <% if(!user){ %>
+    <div class="container text-center">
+        <h1>Voting App</h1>
+        <h2>Create custom polls with live results</h2>
+        <% if(showRegisterBtn){ %> <a href="/signup" class="btn btn-success signup-btn">Sign up</a> <% } %>
+    </div>
+    <% } %>
+
+    <%if (user){ %>
+    <div class="container text-center">
+        <h1>Voting App</h1>
+        <h3>Hello <%= user.username%>! What would you like to do today?</h3>
+        <a href="/poll/new-poll" class="btn btn-success">New Poll</a>
+        <a href="/poll/my-polls" class="btn btn-primary">My Polls</a>
+    </div>        
+    <% } %>
+</div>
+<div class="container fix-top">
+        <%if(success.length>0){%> <div class="alert alert-success"><%=success%></div> <%}%>
+        <%if(error.length>0){%> <div class="alert alert-danger"><%=error%></div> <%}%>
+        
+</div>

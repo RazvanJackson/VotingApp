@@ -1,0 +1,21 @@
+<div class="container option-form">
+        <h2 class="text-center">New Poll</h2>
+        <h4 class="text-center">Question:</h4>
+        <form action="submit-new-poll" method="POST">        
+        <div class="form-group">
+            <input type="text" name="question" placeholder="What's your favorite game?" class="form-control new-poll">
+        </div>
+
+        <h4 class="text-center">Options:</h4>
+        <div class="form-group">
+            <input type="text" name="option1" placeholder="League of Legends" class="form-control new-poll">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="option2" placeholder="Counter Strike Global Offensive" class="form-control new-poll">
+        </div>
+        
+        <button type="button" class="btn btn-default more-options-btn" name="more-options-btn">More Options</button>
+        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+    </form>
+</div>

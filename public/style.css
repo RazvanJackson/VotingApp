@@ -1,0 +1,129 @@
+/* COMMON CLASSES */
+
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar{
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    margin-top: 0px;
+    background-color: #4F558B;
+    color: white;
+    height: 275px;
+}
+
+.jumbotron a{
+    padding: 5px 75px;
+    font-size: 20px;
+}
+
+
+.info-1 .bolt{
+    color:#FFFF37;
+    margin-top:50px;
+    margin-bottom:25px;
+    font-size: 150px;
+}
+
+.info-2 .globe{
+    color:#16800C;
+    margin-top:50px;
+    margin-bottom:25px;
+    font-size: 150px;
+}
+
+.info-3 .facebook{
+    color:#515CBE;
+    margin-top:50px;
+    margin-bottom:25px;
+    font-size: 150px;
+}
+
+.info-1 h2, .info-2 h2, .info-3 h2{
+    margin-bottom:25px;
+}
+
+.list-group-item{
+    margin: 10px auto;
+    width: 400px;
+    font-size: 15px;
+}
+
+/* REGISTER PAGE */
+
+.register-form form .btn{
+    width: 200px;
+    margin-top: 10px;
+}
+
+/* LOGIN PAGE */
+
+.login-form form .login-btn{
+    width: 200px;
+    margin-top: 10px;
+}
+
+/* ADD POLLS */
+
+.new-poll{
+    width: 400px;
+    margin: 0px auto;
+}
+
+.more-options-btn, .submit-btn{
+    width: 150px;
+    display: block;
+    margin: 0px auto 20px auto;
+
+}
+
+.option-form form .more-options-btn, .option-form .submit-btn{
+    width: 200px;
+    margin-top: 10px;
+}
+
+.new-option-div{
+    text-align: center;
+}
+
+.new-option{
+    width: 400px;
+    display: inline-block;
+    margin-left: 120px;
+}
+
+
+.delete-option{
+    display: inline-block;
+    width: 100px;
+    margin: 0px 0px 1px 20px;
+    height: 34px;
+}
+
+/* POLL */
+.h1-title{
+    margin-bottom: 20px;
+}
+
+#vote-btn{
+    display: block;
+    margin: 0px auto;
+}
+
+.progress{
+    width: 65vh;
+    margin: 0px auto 20px auto;
+    text-align: center;
+}
+
+
+.progress-bar{
+    background-color: #5cb85c;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-overflow:string    
+}

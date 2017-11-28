@@ -1,0 +1,6 @@
+<div class="container">
+    <h1 class="text-center">Your polls:</h1>
+    <% myPolls.forEach(function(poll) { %>
+        <a class ="list-group-item" href=<%=poll.id %>><b><%= poll.question %>%></b></a>
+    <% }); %>
+</div>
