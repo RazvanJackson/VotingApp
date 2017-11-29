@@ -115,15 +115,21 @@
 }
 
 .progress{
-    width: 65vh;
+    width: 65%;
     margin: 0px auto 20px auto;
-    text-align: center;
+    position: relative
 }
 
+.progress span {
+    position: absolute;
+    display: block;
+    margin: 0px auto;
+    color: black;
+ }
 
 .progress-bar{
     background-color: #5cb85c;
     font-size: 20px;
     color: rgb(0, 0, 0);
-    text-overflow:string    
+    z-index: -999;
 }

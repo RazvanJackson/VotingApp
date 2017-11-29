@@ -3,11 +3,11 @@ const Poll = require("../models/poll");
 
 const router = express.Router();
 
-router.get("/new-poll", function(req,res){
+router.get("/new-poll", isLogged, function(req,res){
     res.render("new-poll");
 });
 
-router.get("/my-polls", function(req,res){
+router.get("/my-polls", isLogged, function(req,res){
     Poll.find({author:req.user.id}, function(err,data){
         if(err) return err;
         else{
@@ -25,7 +25,7 @@ router.get("/:id", function(req,res){
             let alreadyVoted = false;
             let totalVotes = 0;
 
-            if(poll.voters.includes(req.user.id)) alreadyVoted = true;
+            if(req.user !== undefined) if(poll.voters.includes(req.user.id)) alreadyVoted = true;
             
             poll.options.forEach(function(element){
                  totalVotes += element.votes;
@@ -34,13 +34,14 @@ router.get("/:id", function(req,res){
             res.render("poll",{
                 poll : poll,
                 alreadyVoted : alreadyVoted,
-                totalVotes : totalVotes
+                totalVotes : totalVotes,
+                isConnected : req.user
             });
         }
     });
 });
 
-router.post("/submit-new-poll", function(req,res){
+router.post("/submit-new-poll", isLogged, function(req,res){
     let optionNumber = 1;
     let currentOption;
 
@@ -104,7 +105,7 @@ router.post("/submit-new-poll", function(req,res){
     } 
 });
 
-router.post("/submit-vote", function(req,res){
+router.post("/submit-vote", isLogged, function(req,res){
     let pollId = req.body.pollId;
     let optionVoted = req.body.option;
     
@@ -136,3 +137,11 @@ router.post("/submit-vote", function(req,res){
 });
 
 module.exports = router;
+
+function isLogged(req,res,next){
+    if(req.user) next();
+    else {
+        req.flash("error", "You are not logged in!");
+        res.redirect("/login");
+    }
+}

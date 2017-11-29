@@ -45,7 +45,7 @@ app.use(function(req,res,next){
 });
 
 app.use("/", indexRouter);
-app.use("/poll", isLogged, pollRouter);
+app.use("/poll", pollRouter);
 
 // Server Setup
 const port = 3000;
@@ -58,10 +58,3 @@ app.locals = {
 
 module.exports.locals = app.locals;
 
-function isLogged(req,res,next){
-    if(req.user) next();
-    else {
-        req.flash("error", "You are not logged in!");
-        res.redirect("/login");
-    }
-}
