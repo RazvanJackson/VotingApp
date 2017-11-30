@@ -19,7 +19,7 @@ router.get("/my-polls", isLogged, function(req,res){
 });
 
 router.get("/all", function(req,res){
-    let limitSize = 3;
+    let limitSize = 5;
     let skipSize = req.query.page * limitSize - limitSize;
     let totalPolls;
     let totalPages;

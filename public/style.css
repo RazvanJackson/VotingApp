@@ -134,6 +134,6 @@
 }
 
 /* ALL POLLS */
-.pagination{
-
+.pagination li a{
+    color: black;
 }

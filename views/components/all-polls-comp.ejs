@@ -1,26 +1,34 @@
 <div class="container">
     <div>
-        <h1 class="text-center">All polls:</h1>
-        <% polls.forEach(function(poll) { %>
-            <a class ="list-group-item" href=<%=poll.id %>><b><%= poll.question %>%></b></a>
-        <% }); %>
+        <% if(currentPage <= totalPages){ %>
+            <h1 class="text-center">All polls:</h1>
+            <% polls.forEach(function(poll) { %>
+                <a class ="list-group-item" href=<%=poll.id %>><b><%= poll.question %>%></b></a>
+            <% }); %>
+        <% } %>  
     </div>
+
+    <input type="hidden" currentPage="<%=currentPage%>">
 
     <div class="text-center">
         <ul class="pagination">
+            <% if(currentPage <= totalPages){ %>
             <li><a href="/poll/all?page=1">1</a></li>
-            <% if(totalPages > 3){%>
+            <% if(totalPages > 2){%>
                 <% if(currentPage - 1 != 1 &&  currentPage != 1){ %>
                     <li><a href="/poll/all?page=<%=currentPage - 1 %>"><%=currentPage -1 %></a></li>                
                 <% } %>
-                <% if(currentPage != 1){ %>
+                <% if(currentPage != 1 && currentPage != totalPages){ %>
                     <li><a href="/poll/all?page=<%=currentPage%>"><%=currentPage%></a></li>
                 <% } %>
-                <% if(currentPage >= 1 && currentPage + 1 != totalPages){ %>
+                <% if(currentPage >= 1 && currentPage + 1 < totalPages){ %>
                     <li><a href="/poll/all?page=<%=currentPage + 1 %>"><%=currentPage + 1 %></a></li>
                 <% } %>
             <% } %>
-            <li><a href="/poll/all?page=<%=totalPages%>"><%=totalPages%></a></li>                        
+                <% if(currentPage != totalPages){ %> 
+                    <li><a href="/poll/all?page=<%=totalPages%>"><%=totalPages%></a></li>
+                <% } %>
+            <% } %>                        
         </ul>
     </div>
     
