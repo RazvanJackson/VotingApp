@@ -18,6 +18,32 @@ router.get("/my-polls", isLogged, function(req,res){
     });
 });
 
+router.get("/all", function(req,res){
+    let limitSize = 3;
+    let skipSize = req.query.page * limitSize - limitSize;
+    let totalPolls;
+    let totalPages;
+
+    Poll.find({}, function(err,polls){
+        if(err) return err;
+        else{
+            Poll.count({},function(err,number){
+                if(err) return err;
+                else{
+                    totalPolls=number;
+                    if(totalPolls%limitSize==0) totalPages=totalPolls/limitSize;
+                    else totalPages=Math.floor(totalPolls/limitSize)+1;
+                    res.render("all-polls",{
+                        polls : polls,
+                        totalPages : totalPages,
+                        currentPage : parseInt(req.query.page)
+                    });
+                }
+            });
+        }
+    }).limit(limitSize).skip(skipSize);
+});
+
 router.get("/:id", function(req,res){
     Poll.findOne({_id:req.params.id}, function(err,poll){
         if(err) return err;
@@ -39,10 +65,6 @@ router.get("/:id", function(req,res){
             });
         }
     });
-});
-
-router.get("/all", isLogged, function(req,res){
-    res.render("index");
 });
 
 router.post("/submit-new-poll", isLogged, function(req,res){
