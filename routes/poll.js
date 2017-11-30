@@ -41,6 +41,10 @@ router.get("/:id", function(req,res){
     });
 });
 
+router.get("/all", isLogged, function(req,res){
+    res.render("index");
+});
+
 router.post("/submit-new-poll", isLogged, function(req,res){
     let optionNumber = 1;
     let currentOption;
