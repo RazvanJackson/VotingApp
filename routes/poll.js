@@ -162,6 +162,27 @@ router.post("/submit-vote", isLogged, function(req,res){
 
 });
 
+router.post("/go-to-page", function(req,res){
+    let pageNumber = req.body.page;
+    let limitSize = 5;
+    let totalPages;
+    Poll.count({}, function(err, number){
+        if(err) return err;
+        else{
+            if(number%limitSize==0) totalPages=number/limitSize;
+            else totalPages=Math.floor(number/limitSize)+1;
+
+            if(pageNumber>totalPages || pageNumber < 1){
+                req.flash("error", "Invalid Page!");
+                res.redirect("/poll/all?page=1");
+            }
+            else{
+                res.redirect("/poll/all?page="+pageNumber);
+            }
+        }
+    });
+})
+
 module.exports = router;
 
 function isLogged(req,res,next){

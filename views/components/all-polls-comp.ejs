@@ -8,27 +8,24 @@
         <% } %>  
     </div>
 
-    <input type="hidden" currentPage="<%=currentPage%>">
+    <input type="hidden" name="currentPage" value="<%=currentPage%>" currentPage="<%=currentPage%>">
+    <input type="hidden" name="totalPages" value="<%=totalPages%>">
+    
 
     <div class="text-center">
         <ul class="pagination">
-            <% if(currentPage <= totalPages){ %>
-            <li><a href="/poll/all?page=1">1</a></li>
-            <% if(totalPages > 2){%>
-                <% if(currentPage - 1 != 1 &&  currentPage != 1){ %>
-                    <li><a href="/poll/all?page=<%=currentPage - 1 %>"><%=currentPage -1 %></a></li>                
-                <% } %>
-                <% if(currentPage != 1 && currentPage != totalPages){ %>
-                    <li><a href="/poll/all?page=<%=currentPage%>"><%=currentPage%></a></li>
-                <% } %>
-                <% if(currentPage >= 1 && currentPage + 1 < totalPages){ %>
-                    <li><a href="/poll/all?page=<%=currentPage + 1 %>"><%=currentPage + 1 %></a></li>
-                <% } %>
+            <% if(currentPage != 1){ %>
+                <li><a href="/poll/all?page=<%=currentPage-1%>"><</a></li>
             <% } %>
-                <% if(currentPage != totalPages){ %> 
-                    <li><a href="/poll/all?page=<%=totalPages%>"><%=totalPages%></a></li>
-                <% } %>
-            <% } %>                        
+
+            <form action="go-to-page" method="POST">
+                <input type="text" name="page">
+                <button id="page-find"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+
+            <% if(currentPage < totalPages){ %>
+            <li><a href="/poll/all?page=<%=currentPage+1%>%>">></a></li>
+            <% } %>
         </ul>
     </div>
     
